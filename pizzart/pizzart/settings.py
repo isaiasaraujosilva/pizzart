@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'pizzart.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'db_pizzaria_joao',
+        'NAME': 'db_pizza_joao',
         'USER': 'root',
         'PASSWORD': 'vamos@12',
         'HOST': 'localhost',
