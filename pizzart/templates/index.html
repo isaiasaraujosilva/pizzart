@@ -8,11 +8,14 @@
     <div class="card-header">
       Featured
     </div>
+  <form action="Submit" method="POST"> {% csrf_token %} 
     <div class="card-body">
         <div class="form-group">
-          <br><label for="massa"><h5>Massa, Normal ou Temperada ?</h5></label></br>
+          <br><label for="massa"><h5>Selecione a massa de sua preferencia</h5></label></br>
           <select class="form-control" name="massa" id="">
-            <option></option>
+            {%for massa in massa %}
+            <option value={{massa.id}}>{{massa.tipo}}</option>
+            {% endfor %}
           </select>
           <div class="form-group">
             <br><label for="border"><h5>Que tipo de Borda você prefere ?</h5></label></br>
@@ -30,5 +33,5 @@
         </div>
     </div>
   </div>
-
+</form>
 {% endblock %}
