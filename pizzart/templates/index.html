@@ -6,29 +6,29 @@
 
 <div class="card">
     <div class="card-header">
-      Featured
+      Faça seu pedido
     </div>
   <form action="Submit" method="POST"> {% csrf_token %} 
     <div class="card-body">
         <div class="form-group">
-          <br><label for="massa"><h5>Selecione a massa de sua preferencia</h5></label></br>
-          <select class="form-control" name="massa" id="">
+          <br><label for="dough"><h5>Selecione a massa de sua preferencia</h5></label></br>
+          <select class="form-control" name="dough" id="id_dough">
             {%for massa in massa %}
             <option value={{massa.id}}>{{massa.tipo}}</option>
             {% endfor %}
           </select>
           <div class="form-group">
-            <br><label for="border"><h5>Que tipo de Borda você prefere ?</h5></label></br>
-            <select class="form-control" name="border" id="">  
+            <br><label for="edge"><h5>Que tipo de Borda você prefere ?</h5></label></br>
+            <select class="form-control" name="edge" id="id_edge">  
               {%for borda in borda%}
-              <option>{{borda.tipo}}</option>
+              <option value={{borda.id}}>{{borda.tipo}}</option>
               {%endfor%}
             </select>
             <div class="form-group">
-                <br><label for=""><h5>Qual Sabor ?</h5></label></br>
-            <select class="form-control" name="sabor" id="">
+                <br><label for="flavor"><h5>Qual Sabor ?</h5></label></br>
+            <select class="form-control" name="flavor" id="id_flavor">
               {%for sabor in sabor%}  
-              <option>{{sabor.nome}}</option>
+              <option value={{sabor.id}}>{{sabor.nome}}</option>
               {%endfor%}
               </select>
 

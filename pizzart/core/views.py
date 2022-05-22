@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from core.models import Massas, Bordas, Sabores
@@ -14,3 +15,8 @@ def index(request):
         'borda':borda,
         'sabor':sabor,
     })
+
+def submit_event(request):
+    if request.method=="POST":
+        
+        return HttpResponse('show')
