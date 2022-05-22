@@ -19,14 +19,20 @@
           </select>
           <div class="form-group">
             <br><label for="border"><h5>Que tipo de Borda você prefere ?</h5></label></br>
-            <select class="form-control" name="border" id="">
-              <option></option>
+            <select class="form-control" name="border" id="">  
+              {%for borda in borda%}
+              <option>{{borda.tipo}}</option>
+              {%endfor%}
             </select>
             <div class="form-group">
                 <br><label for=""><h5>Qual Sabor ?</h5></label></br>
             <select class="form-control" name="sabor" id="">
-                <option></option>
+              {%for sabor in sabor%}  
+              <option>{{sabor.nome}}</option>
+              {%endfor%}
               </select>
+
+              <br><button type="submit" name="" id="" class="btn btn-primary" btn-lg btn-block>Enviar</button></br>
   
 
           </div>
