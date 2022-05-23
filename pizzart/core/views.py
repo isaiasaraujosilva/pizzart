@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.views.generic import TemplateView
-from core.models import Massas, Bordas, Sabores, Pizzas,Teste
+from core.models import Massas, Bordas, PizzaSabor, Sabores, Pizzas,Teste
 
 
 #class IndexPageViwer(TemplateView):
@@ -23,9 +23,14 @@ def submit_event(request):
         getMassa = request.POST.get('dough')
         getBorda = request.POST.get('edge')
         getSabor = request.POST.get('flavor')
-        teste=Pizzas(borda_id=getBorda, massa_id=getMassa)
+        pizza=Pizzas(borda_id=getBorda, massa_id=getMassa)
+        pizza.save()
+        ultimo_id=Pizzas.objects.latest('id').id
+        #get_id_pizzas=Pizzas.objects.get(id=count_id)
+        pizzasabor=PizzaSabor(pizza_id=ultimo_id,sabor_id=getSabor)
+        pizzasabor.save()
 
 
-        teste.save()
-        #Pizzas.objects.(borda=getBorda,getMassa)
         return redirect("/")
+        #Pizzas.objects.(borda=getBorda,getMassa)
+        #return redirect("/")
