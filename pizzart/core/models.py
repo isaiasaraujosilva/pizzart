@@ -157,6 +157,8 @@ class PizzaSabor(models.Model):
 
 
 class Pizzas(models.Model):
+    borda=Bordas
+    massa=Massas
     borda = models.ForeignKey(Bordas, models.DO_NOTHING, blank=True, null=True)
     massa = models.ForeignKey(Massas, models.DO_NOTHING, blank=True, null=True)
 
@@ -179,3 +181,11 @@ class Status(models.Model):
     class Meta:
         managed = False
         db_table = 'status'
+
+class Teste(models.Model):
+    teste = models.CharField(max_length=100, blank=True, null=True)
+    dois = models.CharField(max_length=100, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'teste'

@@ -12,9 +12,9 @@
     <div class="card-body">
         <div class="form-group">
           <br><label for="dough"><h5>Selecione a massa de sua preferencia</h5></label></br>
-          <select class="form-control" name="dough" id="id_dough">
+          <select class="form-control" name="dough" id="id_dough" type="number">
             {%for massa in massa %}
-            <option value={{massa.id}}>{{massa.tipo}}</option>
+            <option id = "vaimerda" value={{massa.id}}>{{massa.tipo}}</option>
             {% endfor %}
           </select>
           <div class="form-group">
@@ -31,10 +31,7 @@
               <option value={{sabor.id}}>{{sabor.nome}}</option>
               {%endfor%}
               </select>
-
-              <br><button type="submit" name="" id="" class="btn btn-primary" btn-lg btn-block>Enviar</button></br>
-  
-
+              <input type="submit"> 
           </div>
         </div>
     </div>
