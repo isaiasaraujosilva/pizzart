@@ -34,3 +34,8 @@ def submit_event(request):
         return redirect("/")
         #Pizzas.objects.(borda=getBorda,getMassa)
         #return redirect("/")
+
+
+def dashboard(request):
+    return render(request,'dashboard.html')
+    
