@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.views.generic import TemplateView
-from core.models import Massas, Bordas, PizzaSabor, Sabores, Pizzas,Teste
+from core.models import Massas, Bordas, Pedidos, PizzaSabor, Sabores, Pizzas, Status,Teste
 
 
 #class IndexPageViwer(TemplateView):
@@ -28,7 +28,9 @@ def submit_event(request):
         ultimo_id=Pizzas.objects.latest('id').id
         #get_id_pizzas=Pizzas.objects.get(id=count_id)
         pizzasabor=PizzaSabor(pizza_id=ultimo_id,sabor_id=getSabor)
+        pedido=Pedidos(pizzas_id=ultimo_id,status_id=1)
         pizzasabor.save()
+        pedido.save()
 
 
         return redirect("/")
@@ -37,5 +39,23 @@ def submit_event(request):
 
 
 def dashboard(request):
-    return render(request,'dashboard.html')
+    teste=["teste1","teste2","teste3"]
+    massa=Massas.objects.all()
+    #pedidos=Pedidos.objects.all()
+    #pedido= Pedidos.objects.filter(pizzas)
+    pedido = Pedidos.objects.prefetch_related('pizzas')
+    PizSab= PizzaSabor.objects.prefetch_related('sabor')
+    status=Status.objects.all()
+    #borda=Bordas 
+    # vetor = []
+    # for vetor in pedido :
+    #    print(vetor) #=Pedidos.objects.filter(id=vetor)  
+    #return HttpResponse(pedido)
+    return render(request,'dashboard.html',{
+        'pedido':pedido,
+        'pizzasabor':PizSab,
+        'status':status
+      
+
+     })
     

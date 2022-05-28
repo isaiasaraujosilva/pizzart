@@ -1,5 +1,43 @@
 {%extends "base.html"%}
 {%block title%}Painel de controle{%endblock%}
 {%block content%}
-<h1> TEste </h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Massa</th>
+      <th scope="col">Borda</th>
+      <th scope="col">Sabor</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+        {%for pedido in pedido%}
+        <form method="POST">
+        <tr>
+            <td>{{pedido.id}}</td>
+            <td>{{pedido.pizzas.massa.tipo}}</td>
+            <td>{{pedido.pizzas.borda.tipo}}</td>
+            <td>{{pedido.pizzas}}</td>
+            <td>
+                <div class="form-group">
+                  <label for=""></label>
+                  <select class="form-control" name="" id="">
+                    {%for status in status %}
+                    <option checked={{pedido.status}}>{{status}}</option>
+                    {%endfor%}
+                  
+                  </select>
+                </div>
+            </td>
+            {%endfor%}         
+            <td name="massas.id" value={{massa.id}}>{{massa.id}}</td>
+            <td>{{massa.tipo}}</td>
+        </tr>
+      </form>
+  
+        
+  </tbody>
+</table>
 {%endblock%}
