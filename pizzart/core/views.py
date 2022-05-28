@@ -39,23 +39,25 @@ def submit_event(request):
 
 
 def dashboard(request):
-    teste=["teste1","teste2","teste3"]
-    massa=Massas.objects.all()
-    #pedidos=Pedidos.objects.all()
-    #pedido= Pedidos.objects.filter(pizzas)
-    pedido = Pedidos.objects.prefetch_related('pizzas')
-    PizSab= PizzaSabor.objects.prefetch_related('sabor')
-    status=Status.objects.all()
+    # teste=["teste1","teste2","teste3"]
+    # massa=Massas.objects.all()
+    # #pedidos=Pedidos.objects.all()
+    # #pedido= Pedidos.objects.filter(pizzas)
+    # pedido = Pedidos.objects.prefetch_related()
+    # PizSab= PizzaSabor.objects.all()
+    # p=PizSab
+    # status=Status.objects.all()
     #borda=Bordas 
     # vetor = []
     # for vetor in pedido :
     #    print(vetor) #=Pedidos.objects.filter(id=vetor)  
-    #return HttpResponse(pedido)
+    #pedido = Pedidos.objects.raw('SELECT * FROM pedidos')
+    pizzasabor = PizzaSabor.objects.raw('SELECT pizza_sabor.sabor,pizzas.id FROM pizza_sabor JOIN pizzas ON pizza = pizzas.id;')
+    query="SELECT pedidos.id, sabores.nome FROM pedidos JOIN pizzas ON pizzas_id = pizzas.id JOIN pizza_sabor ON pizzas.id=pizza JOIN sabores ON pizza_sabor.sabor=sabores.id"
+    teste = Pedidos.objects.raw(query)
+   
+    #print(pizzasabor)
+    #return HttpResponse(teste)
     return render(request,'dashboard.html',{
-        'pedido':pedido,
-        'pizzasabor':PizSab,
-        'status':status
-      
-
-     })
-    
+           'pedido':teste 
+           })

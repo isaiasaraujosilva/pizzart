@@ -83,8 +83,7 @@ class Bordas(models.Model):
     class Meta:
         managed = False
         db_table = 'bordas'
-    def __str__(self):
-       return self.tipo
+
 
 class DjangoAdminLog(models.Model):
     action_time = models.DateTimeField()
@@ -137,9 +136,6 @@ class Massas(models.Model):
     class Meta:
         managed = False
         db_table = 'massas'
-        
-    def __str__(self):
-       return self.tipo
 
 
 class Pedidos(models.Model):
@@ -150,12 +146,10 @@ class Pedidos(models.Model):
         managed = False
         db_table = 'pedidos'
 
-  
-
 
 class PizzaSabor(models.Model):
-    pizza = models.ForeignKey('Pizzas', models.DO_NOTHING, blank=True, null=True)
-    sabor = models.ForeignKey('Sabores', models.DO_NOTHING, blank=True, null=True)
+    pizza = models.ForeignKey('Pizzas', models.DO_NOTHING, db_column='pizza', blank=True, null=True)
+    sabor = models.ForeignKey('Sabores', models.DO_NOTHING, db_column='sabor', blank=True, null=True)
 
     class Meta:
         managed = False
@@ -163,16 +157,12 @@ class PizzaSabor(models.Model):
 
 
 class Pizzas(models.Model):
-    borda=Bordas
-    massa=Massas
     borda = models.ForeignKey(Bordas, models.DO_NOTHING, blank=True, null=True)
     massa = models.ForeignKey(Massas, models.DO_NOTHING, blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'pizzas'
-        
-        
 
 
 class Sabores(models.Model):
@@ -180,10 +170,7 @@ class Sabores(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'sabores'   
-        
-    def __str__(self):
-       return self.nome
+        db_table = 'sabores'
 
 
 class Status(models.Model):
@@ -196,8 +183,6 @@ class Status(models.Model):
     def __str__(self):
        return self.tipo
 
-
-        
 
 class Teste(models.Model):
     teste = models.CharField(max_length=100, blank=True, null=True)

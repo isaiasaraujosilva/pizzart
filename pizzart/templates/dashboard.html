@@ -19,17 +19,15 @@
             <td>{{pedido.id}}</td>
             <td>{{pedido.pizzas.massa.tipo}}</td>
             <td>{{pedido.pizzas.borda.tipo}}</td>
-            <td>{{pedido.pizzas}}</td>
+            <td>{{pedido.nome}}</td>
             <td>
                 <div class="form-group">
                   <label for=""></label>
-                  <select class="form-control" name="" id="">
-                    {%for status in status %}
-                    <option checked={{pedido.status}}>{{status}}</option>
-                    {%endfor%}
-                  
+                  <select class="form" sty name="" id="">
+                    <option value={{pedido.id}} checked={{pedido.status}}>{{pedido.status}}</option>
                   </select>
                 </div>
+                <td><input type="submit"></td>
             </td>
             {%endfor%}         
             <td name="massas.id" value={{massa.id}}>{{massa.id}}</td>
