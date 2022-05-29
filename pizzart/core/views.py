@@ -43,21 +43,22 @@ def dashboard(request):
     # massa=Massas.objects.all()
     # #pedidos=Pedidos.objects.all()
     # #pedido= Pedidos.objects.filter(pizzas)
-    # pedido = Pedidos.objects.prefetch_related()
-    # PizSab= PizzaSabor.objects.all()
+    #pedido = Pedidos.objects.prefetch_related()
+    #PizSab= PizzaSabor.objects.prefetch_related()
     # p=PizSab
-    # status=Status.objects.all()
+    status=Status.objects.all()
     #borda=Bordas 
     # vetor = []
     # for vetor in pedido :
     #    print(vetor) #=Pedidos.objects.filter(id=vetor)  
     #pedido = Pedidos.objects.raw('SELECT * FROM pedidos')
-    pizzasabor = PizzaSabor.objects.raw('SELECT pizza_sabor.sabor,pizzas.id FROM pizza_sabor JOIN pizzas ON pizza = pizzas.id;')
+    #pizzasabor = PizzaSabor.objects.raw('SELECT pizza_sabor.sabor,pizzas.id FROM pizza_sabor JOIN pizzas ON pizza = pizzas.id;')
     query="SELECT pedidos.id, sabores.nome FROM pedidos JOIN pizzas ON pizzas_id = pizzas.id JOIN pizza_sabor ON pizzas.id=pizza JOIN sabores ON pizza_sabor.sabor=sabores.id"
-    teste = Pedidos.objects.raw(query)
+    pedidos = Pedidos.objects.raw(query)
    
     #print(pizzasabor)
     #return HttpResponse(teste)
     return render(request,'dashboard.html',{
-           'pedido':teste 
+           'pedido':pedidos,
+           'status':status
            })

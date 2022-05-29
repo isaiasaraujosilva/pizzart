@@ -24,7 +24,9 @@
                 <div class="form-group">
                   <label for=""></label>
                   <select class="form" sty name="" id="">
-                    <option value={{pedido.id}} checked={{pedido.status}}>{{pedido.status}}</option>
+                    {%for status in status %}
+                    <option value={{pedido.id}} checked={{pedido.status}}>{{status}}</option>
+                    {%endfor%}
                   </select>
                 </div>
                 <td><input type="submit"></td>
