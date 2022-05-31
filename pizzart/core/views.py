@@ -46,7 +46,7 @@ def dashboard(request):
     #pedido = Pedidos.objects.prefetch_related()
     #PizSab= PizzaSabor.objects.prefetch_related()
     # p=PizSab
-    status=Status.objects.all()
+    st=Status.objects.all()
     #borda=Bordas 
     # vetor = []
     # for vetor in pedido :
@@ -55,10 +55,7 @@ def dashboard(request):
     #pizzasabor = PizzaSabor.objects.raw('SELECT pizza_sabor.sabor,pizzas.id FROM pizza_sabor JOIN pizzas ON pizza = pizzas.id;')
     query="SELECT pedidos.id, sabores.nome FROM pedidos JOIN pizzas ON pizzas_id = pizzas.id JOIN pizza_sabor ON pizzas.id=pizza JOIN sabores ON pizza_sabor.sabor=sabores.id"
     pedidos = Pedidos.objects.raw(query)
-   
-    #print(pizzasabor)
-    #return HttpResponse(teste)
     return render(request,'dashboard.html',{
            'pedido':pedidos,
-           'status':status
+           'status':st,
            })
