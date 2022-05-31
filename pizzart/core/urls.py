@@ -4,6 +4,6 @@ app_name = 'core'
 urlpatterns = [
     path('', views.index,name="pedidos"),
     path('painel',views.dashboard,name="dashboard"),
-    path('Submit', views.submit_event,name="submit")
-   
+    path('Submit', views.submit_event,name="submit"),
+    path('painel/delete/<int:pedido>',views.delete_pedido)   
 ]

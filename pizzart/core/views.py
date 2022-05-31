@@ -59,3 +59,7 @@ def dashboard(request):
            'pedido':pedidos,
            'status':st,
            })
+
+def delete_pedido(request, pedido):
+    Pedidos.objects.filter(id=pedido).delete()
+    return redirect("/painel")
