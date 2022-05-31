@@ -1,3 +1,4 @@
+from ast import Return
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.views.generic import TemplateView
@@ -17,7 +18,6 @@ def index(request):
         'borda':bord.objects.all(),
         'sabor':sabor.objects.all(),
     })
-
 def submit_event(request):
     if request.POST:
         getMassa = request.POST.get('dough')
@@ -63,3 +63,12 @@ def dashboard(request):
 def delete_pedido(request, pedido):
     Pedidos.objects.filter(id=pedido).delete()
     return redirect("/painel")
+def edit (request, pedido, massa, borda,sabor):
+    
+    #return HttpResponse(pedido)
+    return render(request,'edit_request.html',{
+        'pedido':pedido,
+        'massa':massa,
+        'borda':borda,
+        'sabor':sabor
+    })

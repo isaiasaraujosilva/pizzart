@@ -1,0 +1,30 @@
+{%extends "base.html"%}
+{%block title%}Painel de controle{%endblock%}
+{%block content%}
+  <form>
+      <div class="card border-primary">
+        <img class="card-img-top" src="holder.js/100px180/" alt="">
+        <div class="card-body">
+          <h4 class="card-title">Edição do ID: {{pedido}}</h4>
+          <br>
+          <label>Massa: </label>
+            <select>
+              <option>{{massa}}</option>
+            </select>
+        </br>
+        <br>
+        <label>Borda: </label>
+            <select>
+              <option>{{borda}}</option>
+            </select>
+        </br>
+        <br>
+        <label>Sabor: </label> 
+        <select> 
+              <option>{{sabor}}</option>
+          </select>
+        </br>
+        </div>
+      </div>
+  </form>
+{%endblock%}
