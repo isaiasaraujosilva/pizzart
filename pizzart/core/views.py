@@ -1,4 +1,5 @@
 from ast import Return
+from multiprocessing import Manager
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.views.generic import TemplateView
@@ -8,15 +9,17 @@ from core.models import Massas, Bordas, Pedidos, PizzaSabor, Sabores, Pizzas, St
 #class IndexPageViwer(TemplateView):
 #    template_name='index.html'
 
+
 def index(request):
-    massa = Massas
-    bord= Bordas
-    sabor = Sabores
-    pizza = Pizzas
+
+    massa = Massas.objects.all()
+    bordas= Bordas.objects.all()
+    sabor = Sabores.objects.all()
+    pizza = Pizzas.objects.all()
     return render (request,'index.html',{
-        'massa':massa.objects.all(),
-        'borda':bord.objects.all(),
-        'sabor':sabor.objects.all(),
+        'massa':massa,
+        'borda':bordas,
+        'sabor':sabor,
     })
 def submit_event(request):
     if request.POST:
@@ -64,11 +67,17 @@ def delete_pedido(request, pedido):
     Pedidos.objects.filter(id=pedido).delete()
     return redirect("/painel")
 def edit (request, pedido, massa, borda,sabor):
-    
+    #query="SELECT pedidos.id, sabores.nome FROM pedidos JOIN pizzas ON pizzas_id = pizzas.id JOIN pizza_sabor ON pizzas.id=pizza JOIN sabores ON pizza_sabor.sabor=sabores.id"
+    #getPedido = Pedidos.objects.raw(query)
+    massa = Massas.objects.all()
+    bordas= Bordas.objects.all()
+    sabor = Sabores.objects.all()
+    pizza = Pizzas.objects.all()
+    #getStatus=Status.objects.all()
+    #Eu sei que estou repetindo codigo desnecessario, mas vou refatorar mais para frente :)
     #return HttpResponse(pedido)
     return render(request,'edit_request.html',{
-        'pedido':pedido,
         'massa':massa,
-        'borda':borda,
+        'borda':bordas,
         'sabor':sabor
     })

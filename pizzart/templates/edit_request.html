@@ -9,19 +9,25 @@
           <br>
           <label>Massa: </label>
             <select>
-              <option>{{massa}}</option>
+                {%for massa in massa%}
+                <option value={{massa.id}}>{{massa.tipo}}</option>
+                {%endfor%}
             </select>
         </br>
         <br>
-        <label>Borda: </label>
+        <label>Borda:</label>
             <select>
-              <option>{{borda}}</option>
+              {%for borda in borda %}
+                <option value={{borda.id}}>{{borda.tipo}}</option>
+              {%endfor%}
             </select>
         </br>
         <br>
-        <label>Sabor: </label> 
+        <label>Sabor:</label> 
         <select> 
-              <option>{{sabor}}</option>
+            {%for sabor in sabor %}  
+            <option value{{sabor.id}}>{{sabor.nome}}</option>
+            {%endfor%}
           </select>
         </br>
         </div>
