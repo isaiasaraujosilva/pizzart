@@ -68,16 +68,19 @@ def delete_pedido(request, pedido):
     return redirect("/painel")
 def edit (request, pedido, massa, borda,sabor):
     #query="SELECT pedidos.id, sabores.nome FROM pedidos JOIN pizzas ON pizzas_id = pizzas.id JOIN pizza_sabor ON pizzas.id=pizza JOIN sabores ON pizza_sabor.sabor=sabores.id"
-    #getPedido = Pedidos.objects.raw(query)
-    massa = Massas.objects.all()
-    bordas= Bordas.objects.all()
-    sabor = Sabores.objects.all()
-    pizza = Pizzas.objects.all()
+    getPedido = Pedidos.objects.filter(id=pedido)
+    backmassa = Massas.objects.all()
+    backbordas= Bordas.objects.all()
+    backsabor = Sabores.objects.all()
+    backpizza = Pizzas.objects.all()
     #getStatus=Status.objects.all()
     #Eu sei que estou repetindo codigo desnecessario, mas vou refatorar mais para frente :)
-    #return HttpResponse(pedido)
+    #return HttpResponse(getPedido)
     return render(request,'edit_request.html',{
-        'massa':massa,
-        'borda':bordas,
-        'sabor':sabor
+        'backmassa':backmassa,
+        'backborda':backbordas,
+        'backsabor':backsabor,
+        'frontmassa':massa,
+        'frontborda':borda,
+        'frontsabor':sabor
     })

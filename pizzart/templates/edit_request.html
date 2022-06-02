@@ -9,27 +9,31 @@
           <br>
           <label>Massa: </label>
             <select>
-                {%for massa in massa%}
-                <option value={{massa.id}}>{{massa.tipo}}</option>
+              <option value="" selected="selected" hidden="hidden">{{frontmassa}}</option>
+                {%for backmassa in backmassa%} 
+                <option value={{backmassa.id}}>{{backmassa.tipo}}</option>
                 {%endfor%}
             </select>
         </br>
         <br>
         <label>Borda:</label>
             <select>
-              {%for borda in borda %}
-                <option value={{borda.id}}>{{borda.tipo}}</option>
+              <option value="" selected="selected" hidden="hidden">{{frontborda}}</option>
+              {%for backborda in backborda %}
+                <option value={{backborda.id}}>{{backborda.tipo}}</option>
               {%endfor%}
             </select>
         </br>
         <br>
         <label>Sabor:</label> 
         <select> 
-            {%for sabor in sabor %}  
-            <option value{{sabor.id}}>{{sabor.nome}}</option>
+          <option value="" selected="selected" hidden="hidden">{{frontsabor}}</option>
+            {%for backsabor in backsabor %}  
+            <option value{{backsabor.id}}>{{backsabor.nome}}</option>
             {%endfor%}
           </select>
         </br>
+        <input href="" type="submit">
         </div>
       </div>
   </form>
