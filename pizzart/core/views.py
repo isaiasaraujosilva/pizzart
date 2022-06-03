@@ -67,12 +67,25 @@ def dashboard(request):
 def delete_pedido(request, pedido):
     Pedidos.objects.filter(id=pedido).delete()
     return redirect("/painel")
+
+
+
+
+
 def edit (request, pedido):
+    #eu sei que estou repetindo muito codigo, mas assim que possivel vou refatorar
     edit_status=Status.objects.all()
+    edit_borda=Bordas.objects.all()
+    edit_massa=Massas.objects.all()
+    edit_sabor=Sabores.objects.all()
     numero=str(pedido)
     query="SELECT pedidos.id, sabores.nome FROM pedidos JOIN pizzas ON pizzas_id = pizzas.id JOIN pizza_sabor ON pizzas.id=pizza JOIN sabores ON pizza_sabor.sabor=sabores.id where pedidos.id="+numero
     pedidos = Pedidos.objects.raw(query)
     return render(request,'edit_request.html',{
         'back_pedido':pedidos,
-        'back_status':edit_status
+        'back_status':edit_status,
+        'back_borda':edit_borda,
+        'back_massa':edit_massa,
+        'back_sabor':edit_sabor
+
     })

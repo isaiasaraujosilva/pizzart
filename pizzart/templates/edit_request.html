@@ -23,7 +23,14 @@
                   <form method="POST">
                   <tr>
                       <td>{{back_pedido.id}}</td>
-                      <td>{{back_pedido.pizzas.massa.tipo}}</td>
+                      <td>
+                        <select>
+                          <option value="" selected="selected" hidden="hidden">{{back_pedido.pizzas.massa.tipo}}</option>
+                          {%for back_massa in back_massa%}
+                            <option>{{back_massa.tipo}}</option>
+                          {%endfor%}
+                        </select>
+                      </td>
                       <td>{{back_pedido.pizzas.borda.tipo}}</td>
                       <td>{{back_pedido.nome}}</td>
                       <td>
