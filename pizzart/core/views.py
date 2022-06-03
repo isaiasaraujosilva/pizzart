@@ -26,6 +26,7 @@ def submit_event(request):
         getMassa = request.POST.get('dough')
         getBorda = request.POST.get('edge')
         getSabor = request.POST.get('flavor')
+        
         pizza=Pizzas(borda_id=getBorda, massa_id=getMassa)
         pizza.save()
         ultimo_id=Pizzas.objects.latest('id').id
@@ -66,21 +67,12 @@ def dashboard(request):
 def delete_pedido(request, pedido):
     Pedidos.objects.filter(id=pedido).delete()
     return redirect("/painel")
-def edit (request, pedido, massa, borda,sabor):
-    #query="SELECT pedidos.id, sabores.nome FROM pedidos JOIN pizzas ON pizzas_id = pizzas.id JOIN pizza_sabor ON pizzas.id=pizza JOIN sabores ON pizza_sabor.sabor=sabores.id"
-    getPedido = Pedidos.objects.filter(id=pedido)
-    backmassa = Massas.objects.all()
-    backbordas= Bordas.objects.all()
-    backsabor = Sabores.objects.all()
-    backpizza = Pizzas.objects.all()
-    #getStatus=Status.objects.all()
-    #Eu sei que estou repetindo codigo desnecessario, mas vou refatorar mais para frente :)
-    #return HttpResponse(getPedido)
+def edit (request, pedido):
+    edit_status=Status.objects.all()
+    numero=str(pedido)
+    query="SELECT pedidos.id, sabores.nome FROM pedidos JOIN pizzas ON pizzas_id = pizzas.id JOIN pizza_sabor ON pizzas.id=pizza JOIN sabores ON pizza_sabor.sabor=sabores.id where pedidos.id="+numero
+    pedidos = Pedidos.objects.raw(query)
     return render(request,'edit_request.html',{
-        'backmassa':backmassa,
-        'backborda':backbordas,
-        'backsabor':backsabor,
-        'frontmassa':massa,
-        'frontborda':borda,
-        'frontsabor':sabor
+        'back_pedido':pedidos,
+        'back_status':edit_status
     })
