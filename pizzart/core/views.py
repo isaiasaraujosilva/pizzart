@@ -1,9 +1,11 @@
 from ast import Return
 from multiprocessing import Manager
+from sqlite3 import Cursor
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.views.generic import TemplateView
 from core.models import Massas, Bordas, Pedidos, PizzaSabor, Sabores, Pizzas, Status,Teste
+from django.db import connection, transaction
 
 
 #class IndexPageViwer(TemplateView):
@@ -92,10 +94,25 @@ def edit (request, pedido):
 def submit_edit(request,pedido):
     front_massa=request.POST.get("edit_massa")
     front_status=request.POST.get("edit_status")
+    front_borda=request.POST.get("edit_borda")
+    cursor = connection.cursor()
 
+    #qry="UPDATE pizzas JOIN pedidos ON pedidos.pizzas_id = pizzas.id  SET pizzas.borda_id = 2 WHERE pedidos.id=69"
     if request.POST:
         
-        obj_pedido=Pedidos.objects.filter(id=pedido)
-        obj_pedido.update(status=front_status)
+        #teste=Pedidos.objects.get(id=pedido,pizzas__borda_id=2)
+       #teste=Pedidos.objects.raw(qry).upda
+       #teste.update()
+       #Manager.raw(teste).save()
 
-    return HttpResponse(front_massa)
+         #obj_pedido=Pedidos.objects.filter(id=pedido)
+        #obj_pedido.update(status=front_status,pizzas__massas__id=2)
+        #obj_massa=Pedidos.objects.filter(id=pedido)
+        cursor = connection.cursor()
+
+    # Operação de modificação de dado - commit obrigatório
+        cursor.execute("UPDATE pizzas JOIN pedidos ON pedidos.pizzas_id = pizzas.id  SET pizzas.borda_id =%s WHERE pedidos.id=%s", [front_borda,pedido])
+        transaction.commit()
+
+        #return HttpResponse("cheguei aqui")
+    return redirect("/painel")
