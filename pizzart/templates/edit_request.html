@@ -44,7 +44,14 @@
 
                       </td>
                       
-                      <td>{{back_pedido.nome}}</td>
+                      <td>
+                        <select>
+                          {%for back_sabor in back_sabor %}
+                            <option value={{back_pedido.id}} seleted="selected" hidden="hidden">{{back_pedido.nome}}</option>
+                            <option value={{back_sabor.id}}>{{back_sabor.nome}}</option>
+                          {%endfor%}
+                          </select>
+                      </td>
                       <td>
                         <select name="edit_status">
                           {%for back_status in back_status%}
