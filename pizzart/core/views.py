@@ -90,9 +90,12 @@ def edit (request, pedido):
 
     })
 def submit_edit(request,pedido):
+    front_massa=request.POST.get("edit_massa")
+    front_status=request.POST.get("edit_status")
+
     if request.POST:
-        front_status=request.POST.get("edit_status")
+        
         obj_pedido=Pedidos.objects.filter(id=pedido)
         obj_pedido.update(status=front_status)
 
-    return HttpResponse(front_status)
+    return HttpResponse(front_massa)

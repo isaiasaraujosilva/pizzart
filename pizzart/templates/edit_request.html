@@ -24,10 +24,11 @@
                   <tr>
                       <td>{{back_pedido.id}}</td>
                       <td>
-                        <select>
-                          <option value="" selected="selected" hidden="hidden">{{back_pedido.pizzas.massa.tipo}}</option>
+                        <select name="edit_massa">
+                          
+                          <option value={{back_pedido.pizzas.massa.id}} selected="selected" hidden="hidden">{{back_pedido.pizzas.massa.tipo}}</option>
                           {%for back_massa in back_massa%}
-                            <option>{{back_massa.tipo}}</option>
+                            <option value={{back_massa.id}}>{{back_massa.tipo}}</option>
                           {%endfor%}
                         </select>
                       </td>
