@@ -89,7 +89,10 @@ def edit (request, pedido):
         'back_sabor':edit_sabor
 
     })
-def edit_submit(request,pedido):
-    obj_pedido=Pedidos.objects.filter(id=pedido)
+def submit_edit(request,pedido):
+    if request.POST:
+        front_status=request.POST.get("edit_status")
+        obj_pedido=Pedidos.objects.filter(id=pedido)
+        obj_pedido.update(status=front_status)
 
-    return HttpResponse(obj_pedido)
+    return HttpResponse(front_status)

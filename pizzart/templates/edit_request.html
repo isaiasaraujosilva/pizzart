@@ -34,10 +34,10 @@
                       <td>{{back_pedido.pizzas.borda.tipo}}</td>
                       <td>{{back_pedido.nome}}</td>
                       <td>
-                        <select >
+                        <select name="edit_status">
                           {%for back_status in back_status%}
-                            <option value="" selected="selected" hidden="hidden">{{back_pedido.status}}</option>
-                            <option value={{back_pedido.status}}>{{back_status}}</option>
+                            <option value={{back_pedido.id}} selected="selected" hidden="hidden">{{back_pedido.status}}</option>
+                            <option value={{back_status.id}}>{{back_status}}</option>
                           {%endfor%}
                        </select>
                           </div>
