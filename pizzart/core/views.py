@@ -105,15 +105,18 @@ def submit_edit(request,pedido):
        #teste=Pedidos.objects.raw(qry).upda
        #teste.update()
        #Manager.raw(teste).save()
-       cursor = connection.cursor()
-       try:
-        obj_pedido=Pedidos.objects.filter(id=pedido)
-        obj_pedido.update(status=front_status)
-       except: 
-        cursor.execute("UPDATE pizzas JOIN pedidos ON pedidos.pizzas_id = pizzas.id  SET pizzas.borda_id = %s WHERE pedidos.id=%s",[front_borda,pedido])
-        transaction.commit()
+        cursor = connection.cursor()
+    #try:
+    #    obj_pedido=Pedidos.objects.filter(id=pedido)
+    #    obj_pedido.update(status=front_status)
+    #except: 
+    #    cursor.execute("UPDATE pizzas JOIN pedidos ON pedidos.pizzas_id = pizzas.id  SET pizzas.borda_id = %s WHERE pedidos.id=%s",[front_borda,pedido])
+    #    transaction.commit()
     
-        
+    cursor = connection.cursor()
+    cursor.execute("UPDATE pizzas JOIN pedidos ON pedidos.pizzas_id = pizzas.id  SET pizzas.massa_id = 3 WHERE pedidos.id=78")
+    transaction.commit()
+    print("cheguei aqui")       
 
 
     # Operação de modificação de dado - commit obrigatório
