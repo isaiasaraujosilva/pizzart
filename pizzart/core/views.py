@@ -1,6 +1,7 @@
 from ast import Return
 from multiprocessing import Manager
 from sqlite3 import Cursor
+from warnings import catch_warnings
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.views.generic import TemplateView
@@ -104,15 +105,20 @@ def submit_edit(request,pedido):
        #teste=Pedidos.objects.raw(qry).upda
        #teste.update()
        #Manager.raw(teste).save()
+       cursor = connection.cursor()
+       try:
+        obj_pedido=Pedidos.objects.filter(id=pedido)
+        obj_pedido.update(status=front_status)
+       except: 
+        cursor.execute("UPDATE pizzas JOIN pedidos ON pedidos.pizzas_id = pizzas.id  SET pizzas.borda_id = %s WHERE pedidos.id=%s",[front_borda,pedido])
+        transaction.commit()
+    
+        
 
-         #obj_pedido=Pedidos.objects.filter(id=pedido)
-        #obj_pedido.update(status=front_status,pizzas__massas__id=2)
-        #obj_massa=Pedidos.objects.filter(id=pedido)
-        cursor = connection.cursor()
 
     # Operação de modificação de dado - commit obrigatório
-        cursor.execute("UPDATE pizzas JOIN pedidos ON pedidos.pizzas_id = pizzas.id  SET pizzas.borda_id =%s WHERE pedidos.id=%s", [front_borda,pedido])
-        transaction.commit()
+        #cursor.execute("UPDATE pizzas JOIN pedidos ON pedidos.pizzas_id = pizzas.id  SET pizzas.borda_id = %s WHERE pedidos.id=%s",[front_borda,pedido])
+        #transaction.commit()
 
         #return HttpResponse("cheguei aqui")
     return redirect("/painel")
