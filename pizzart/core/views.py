@@ -96,7 +96,8 @@ def submit_edit(request,pedido):
     front_massa=request.POST.get("edit_massa")
     front_status=request.POST.get("edit_status")
     front_borda=request.POST.get("edit_borda")
-    cursor = connection.cursor()
+    front_sabor=request.POST.get("edit_sabor")
+    
 
     #qry="UPDATE pizzas JOIN pedidos ON pedidos.pizzas_id = pizzas.id  SET pizzas.borda_id = 2 WHERE pedidos.id=69"
     if request.POST:
@@ -106,22 +107,29 @@ def submit_edit(request,pedido):
        #teste.update()
        #Manager.raw(teste).save()
         cursor = connection.cursor()
-    #try:
-    #    obj_pedido=Pedidos.objects.filter(id=pedido)
-    #    obj_pedido.update(status=front_status)
-    #except: 
-    #    cursor.execute("UPDATE pizzas JOIN pedidos ON pedidos.pizzas_id = pizzas.id  SET pizzas.borda_id = %s WHERE pedidos.id=%s",[front_borda,pedido])
-    #    transaction.commit()
-    
-    cursor = connection.cursor()
-    cursor.execute("UPDATE pizzas JOIN pedidos ON pedidos.pizzas_id = pizzas.id  SET pizzas.massa_id = 3 WHERE pedidos.id=78")
-    transaction.commit()
-    print("cheguei aqui")       
+        try:
+           obj_pedido=Pedidos.objects.filter(id=pedido)
+           obj_pedido.update(status=front_status)
+        except: 
+           cursor.execute("UPDATE pizzas JOIN pedidos ON pedidos.pizzas_id = pizzas.id  SET pizzas.borda_id = %s WHERE pedidos.id=%s",[front_borda,pedido])
+           cursor.execute("UPDATE pizzas JOIN pedidos ON pedidos.pizzas_id = pizzas.id  SET pizzas.massa_id = %s WHERE pedidos.id=%s",[front_massa,pedido])
+           transaction.commit()
+        
+        #cursor = connection.cursor()
+        #cursor = connection.cursor()
+        idpizza=Pizzas.objects.raw("SELECT pedidos.id,pedidos.pizzas_id FROM pedidos WHERE id="+str(pedido))
+        for idpizza in idpizza:
+            endid=idpizza.pizzas_id 
+        pizzasabor=PizzaSabor.objects.filter(pizza=endid)
+        pizzasabor.update(sabor=front_sabor)
+        #transaction.commit()
+        #print("cheguei aqui")       
 
 
     # Operação de modificação de dado - commit obrigatório
         #cursor.execute("UPDATE pizzas JOIN pedidos ON pedidos.pizzas_id = pizzas.id  SET pizzas.borda_id = %s WHERE pedidos.id=%s",[front_borda,pedido])
         #transaction.commit()
 
-        #return HttpResponse("cheguei aqui")
-    return redirect("/painel")
+        return HttpResponse(pizzasabor)
+
+    #return redirect("/painel")
