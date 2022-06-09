@@ -23,15 +23,7 @@
             <td>{{pedido.pizzas.massa.tipo}}</td>
             <td>{{pedido.pizzas.borda.tipo}}</td>
             <td>{{pedido.nome}}</td>
-            <td>
-              <select >
-                {%for status in status%}
-                  <option value="" selected="selected" hidden="hidden">{{pedido.status}}</option>
-                  <option value={{pedido.status}}>{{status}}</option>
-                {%endfor%}
-             </select>
-                </div>
-              </td>
+            <td>{{pedido.status}}</td>
               <td>
                  <a href="painel/delete/{{pedido.id}}" style="vertical-align: sub;">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
