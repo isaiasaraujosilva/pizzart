@@ -106,22 +106,37 @@ def submit_edit(request,pedido):
        #teste=Pedidos.objects.raw(qry).upda
        #teste.update()
        #Manager.raw(teste).save()
-        cursor = connection.cursor()
-        try:
-           obj_pedido=Pedidos.objects.filter(id=pedido)
-           obj_pedido.update(status=front_status)
-        except: 
-           cursor.execute("UPDATE pizzas JOIN pedidos ON pedidos.pizzas_id = pizzas.id  SET pizzas.borda_id = %s WHERE pedidos.id=%s",[front_borda,pedido])
-           cursor.execute("UPDATE pizzas JOIN pedidos ON pedidos.pizzas_id = pizzas.id  SET pizzas.massa_id = %s WHERE pedidos.id=%s",[front_massa,pedido])
-           transaction.commit()
+        # cursor = connection.cursor()
+        # obj_pedido=Pedidos.objects.filter(id=pedido)
+        # obj_pedido.update(status=front_status)
+
+        #cursor.execute("UPDATE pizzas JOIN pedidos ON pedidos.pizzas_id = pizzas.id  SET pizzas.borda_id = %s WHERE pedidos.id=%s",[front_borda,pedido])
+        #transaction.commit()
         
         #cursor = connection.cursor()
         #cursor = connection.cursor()
         idpizza=Pizzas.objects.raw("SELECT pedidos.id,pedidos.pizzas_id FROM pedidos WHERE id="+str(pedido))
         for idpizza in idpizza:
             endid=idpizza.pizzas_id 
-        pizzasabor=PizzaSabor.objects.filter(pizza=endid)
-        pizzasabor.update(sabor=front_sabor)
+        
+        try:
+            PizzaSabor.objects.filter(pizza=endid).update(sabor=front_sabor)
+        except:
+            pass    
+        try:
+            borda=Pizzas.objects.filter(id=endid).update(borda_id=front_borda)
+        except:
+            pass   
+        try:
+            borda=Pizzas.objects.filter(id=endid).update(massa_id=front_massa)
+        except:
+            pass
+        try:
+            Status=Pedidos.objects.filter(id=pedido).update(status=front_status)
+        except:
+            pass    
+        #borda.
+
         #transaction.commit()
         #print("cheguei aqui")       
 
@@ -130,6 +145,6 @@ def submit_edit(request,pedido):
         #cursor.execute("UPDATE pizzas JOIN pedidos ON pedidos.pizzas_id = pizzas.id  SET pizzas.borda_id = %s WHERE pedidos.id=%s",[front_borda,pedido])
         #transaction.commit()
 
-        return HttpResponse(pizzasabor)
+        #return HttpResponse(borda)
 
-    #return redirect("/painel")
+    return redirect("/painel")
