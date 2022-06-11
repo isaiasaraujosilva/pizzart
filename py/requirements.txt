@@ -11,6 +11,8 @@ Django==4.0.4
 gunicorn==20.1.0
 idna @ file:///home/conda/feedstock_root/build_artifacts/idna_1642433548627/work
 mysqlclient==2.1.0
+package-name==0.1
+psycopg2-binary==2.9.3
 pycosat @ file:///home/conda/feedstock_root/build_artifacts/pycosat_1649384802055/work
 pycparser @ file:///home/conda/feedstock_root/build_artifacts/pycparser_1636257122734/work
 pyOpenSSL @ file:///home/conda/feedstock_root/build_artifacts/pyopenssl_1643496850550/work
