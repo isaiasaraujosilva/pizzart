@@ -7,6 +7,7 @@ from django.shortcuts import redirect, render
 from django.views.generic import TemplateView
 from core.models import Massas, Bordas, Pedidos, PizzaSabor, Sabores, Pizzas, Status,Teste
 from django.db import connection, transaction
+from Cython.Build import cythonize
 
 
 #class IndexPageViwer(TemplateView):
