@@ -12,6 +12,7 @@ Django==4.0.4
 django-heroku==0.3.1
 gunicorn==20.1.0
 heroku==0.1.4
+conda
 idna 
 mysqlclient==2.1.0
 numpy==1.22.4
