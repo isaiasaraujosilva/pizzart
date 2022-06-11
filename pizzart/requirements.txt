@@ -1,4 +1,4 @@
-Cython==0.29.30
+Cython==0.29.00
 asgiref==3.5.1
 brotlipy
 certifi==2021.10.8
