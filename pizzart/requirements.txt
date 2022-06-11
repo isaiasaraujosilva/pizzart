@@ -1,3 +1,4 @@
+Cython==0.29.30
 asgiref==3.5.1
 brotlipy
 certifi==2021.10.8
@@ -33,4 +34,4 @@ unicorn==1.0.3
 update==0.0.1
 urllib3 
 whitenoise==6.2.0
-Cython==0.29.30
+
