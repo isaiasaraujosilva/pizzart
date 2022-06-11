@@ -1,1 +1,1 @@
-web: gunicorn pizzart.wsgi
+web: gunicorn pizzart.wsgicd 
