@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from Cython.Build import cythonize
 app_name = 'core'
 urlpatterns = [
     path('', views.index,name="pedidos"),
