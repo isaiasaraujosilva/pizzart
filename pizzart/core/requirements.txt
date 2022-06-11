@@ -1,0 +1,37 @@
+asgiref==3.5.1
+brotlipy @ file:///home/conda/feedstock_root/build_artifacts/brotlipy_1648854164373/work
+certifi==2021.10.8
+cffi @ file:///home/conda/feedstock_root/build_artifacts/cffi_1636046055389/work
+charset-normalizer @ file:///home/conda/feedstock_root/build_artifacts/charset-normalizer_1644853463426/work
+colorama @ file:///home/conda/feedstock_root/build_artifacts/colorama_1602866480661/work
+conda==4.12.0
+conda-package-handling @ file:///home/conda/feedstock_root/build_artifacts/conda-package-handling_1649385069444/work
+configparser==5.2.0
+cryptography @ file:///home/conda/feedstock_root/build_artifacts/cryptography_1649035236822/work
+dj-database-url==0.5.0
+Django==4.0.4
+django-heroku==0.3.1
+gunicorn==20.1.0
+heroku==0.1.4
+idna @ file:///home/conda/feedstock_root/build_artifacts/idna_1642433548627/work
+mysqlclient==2.1.0
+numpy==1.22.4
+package-name==0.1
+psycopg2==2.9.3
+psycopg2-binary==2.9.3
+pycosat @ file:///home/conda/feedstock_root/build_artifacts/pycosat_1649384802055/work
+pycparser @ file:///home/conda/feedstock_root/build_artifacts/pycparser_1636257122734/work
+pyOpenSSL @ file:///home/conda/feedstock_root/build_artifacts/pyopenssl_1643496850550/work
+pypi==2.1
+PySocks @ file:///home/conda/feedstock_root/build_artifacts/pysocks_1648857263093/work
+python-dateutil==1.5
+requests @ file:///home/conda/feedstock_root/build_artifacts/requests_1641580202195/work
+ruamel-yaml-conda @ file:///home/conda/feedstock_root/build_artifacts/ruamel_yaml_1636009144459/work
+six @ file:///home/conda/feedstock_root/build_artifacts/six_1620240208055/work
+sqlparse==0.4.2
+style==1.1.0
+tqdm @ file:///home/conda/feedstock_root/build_artifacts/tqdm_1649051611147/work
+unicorn==1.0.3
+update==0.0.1
+urllib3 @ file:///home/conda/feedstock_root/build_artifacts/urllib3_1647489083693/work
+whitenoise==6.2.0
