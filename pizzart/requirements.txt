@@ -4,7 +4,6 @@ certifi==2021.10.8
 cffi 
 charset-normalizer 
 colorama 
-conda-package-handling 
 configparser==5.2.0
 cryptography
 dj-database-url==0.5.0
