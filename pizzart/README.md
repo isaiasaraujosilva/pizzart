@@ -15,8 +15,8 @@
 ### Ubuntu
 
 #### Python3.10
-       Instalação por Gerenciadores de Pacotes
-       Os gerenciadores de pacotes mais comuns são apt-get (Debian, Ubuntu) e yum (RedHat, CentOS). Caso sua distribuição utilize um gerenciador de pacotes diferente, acesse a página de downloads do Python.
+
+Instalação por Gerenciadores de Pacotes Os gerenciadores de pacotes mais comuns são apt-get (Debian, Ubuntu) e yum (RedHat, CentOS). Caso sua distribuição utilize um gerenciador de pacotes diferente, acesse a página de downloads do Python.
 
 ##### Apt-get
 
